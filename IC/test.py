@@ -1,14 +1,15 @@
-''' File for testing different files
 '''
-__author__ = 'ivanovsergey'
+File for testing different algorithm
+'''
+__author__ = 'qio'
 
 import networkx as nx
 
 from IC import runIC
+from IC import irunIC
 from degreeDiscount import degreeDiscountIC
 from generalGreedy import generalGreedy
-
-#import matplotlib.pylab as plt
+from BI_graph_greedy import BI_graph_greedy
 import os
 
 if __name__ == '__main__':
@@ -17,7 +18,7 @@ if __name__ == '__main__':
 
     # read in graph
     G = nx.Graph()
-    with open('../graphdata/bi_graph.txt') as f:
+    with open('bi_graph.txt') as f:
         n, m = f.readline().split()
         for line in f:
             u, v = map(int, line.split())
@@ -25,19 +26,21 @@ if __name__ == '__main__':
                 G[u][v]['weight'] += 1
             except:
                 G.add_edge(u,v, weight=1)
-            # G.add_edge(u, v, weight=1)
     print 'Built graph G'
     print time.time() - start
 
     #calculate initial set
     seed_size = 10
+
+
     #S = degreeDiscountIC(G, seed_size)
     S = generalGreedy(G, seed_size)
+    #S=BI_graph_greedy(G,30,30*50/20,seed_size)
     print 'Initial set of', seed_size, 'nodes chosen'
     print time.time() - start
 
     # write results S to file
-    with open('visualisation.txt', 'w') as f:
+    with open('the_nodes_found.txt', 'w') as f:
         for node in S:
             f.write(str(node) + os.linesep)
 
@@ -51,7 +54,7 @@ if __name__ == '__main__':
     print 'Avg. Targeted', int(round(avg)), 'nodes out of', len(G)
     print time.time() - start
 
-    with open('lemma1.txt', 'w') as f:
+    with open('the_nodes_affected.txt', 'w') as f:
         f.write(str(len(S)) + os.linesep)
         for node in T:
             f.write(str(node) + os.linesep)

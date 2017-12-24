@@ -1,7 +1,3 @@
-''' Implements greedy heuristic for IC model [1]
-
-[1] -- Wei Chen et al. Efficient Influence Maximization in Social Networks (Algorithm 1)
-'''
 __author__ = 'ivanovsergey'
 
 from priorityQueue import PriorityQueue as PQ
@@ -18,7 +14,7 @@ def generalGreedy(G, k, p=.01):
     import time
     start = time.time()
    # R = 20 # number of times to run Random Cascade
-    R = 1
+    R = 20
     S = [] # set of selected nodes
     # add node to S if achieves maximum propagation for current chosen + this node
     for i in range(k):
@@ -31,6 +27,5 @@ def generalGreedy(G, k, p=.01):
                     s.add_task(v, priority - float(len(runIC(G, S + [v], p)))/R) # add normalized spread value
         task, priority = s.pop_item()
         S.append(task)
-        print " fuck";
         print task,i, k, time.time() - start
     return S

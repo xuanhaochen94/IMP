@@ -68,3 +68,33 @@ def avgSize(G,S,p,iterations):
     for i in range(iterations):
         avg += float(len(runIC(G,S,p)))/iterations
     return avg
+
+
+def irunIC(G, S,n,m, p=.01):
+    ''' we don't run the independent cascade model (finds levels of propagation).
+    because the Graph is bi_graph,we can get the accurate number.
+    Input: G -- networkx graph object
+    S -- initial set of vertices
+    n--the number of key nodes
+    m--the number of user nodes
+    p -- propagation probability
+    Output: answer -- number of influenced set  (including S)
+    '''
+
+    from copy import deepcopy
+    answer = 0
+    Acur = deepcopy(S)
+    setA=set()
+    for v in range(n,n+m):
+        temp=0
+        for u in Acur:
+            try:
+                temp+=G[u][v]['weight'];
+            except:
+                pass
+        answer+= 1 - (1-p)**temp
+    return answer
+
+
+
+

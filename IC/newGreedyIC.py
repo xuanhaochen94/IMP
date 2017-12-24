@@ -8,7 +8,7 @@ from random import random
 from priorityQueue import PriorityQueue as PQ
 import networkx as nx
 from runIAC import avgIAC
-
+import random
 
 def bfs(E, S):
     ''' Finds all vertices reachable from subset S in graph E using Breadth-First Search
@@ -154,9 +154,20 @@ if __name__ == "__main__":
     import time
     start = time.time()
 
-    G = nx.read_gpickle("../../graphs/hep.gpickle")
-    print 'Read graph G'
+    G = nx.Graph()
+    with open('../graphdata/hep.txt') as f:
+        n, m = f.readline().split()
+        for line in f:
+            u, v = map(int, line.split())
+            try:
+                G[u][v]['weight'] += 1
+            except:
+                G.add_edge(u,v, weight=1)
+            # G.add_edge(u, v, weight=1)
+    print 'Built graph G'
     print time.time() - start
+
+
 
     model = "MultiValency"
 
@@ -169,10 +180,13 @@ if __name__ == "__main__":
 
     # get propagation probabilities
     Ep = dict()
-    with open("Ep_hep_%s1.txt" %ep_model) as f:
+   # with open("Ep_hep_%s1.txt" %ep_model) as f:
+    with open("../graphdata/hep.txt") as f:
         for line in f:
             data = line.split()
-            Ep[(int(data[0]), int(data[1]))] = float(data[2])
+            #Ep[(int(data[0]), int(data[1]))] = float(data[2])
+            if(int(data[0])<15233):
+                Ep[(int(data[0]), int(data[1]))] = 0.01
 
     I = 1000
 
