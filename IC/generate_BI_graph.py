@@ -14,6 +14,7 @@ def generateGraph (n,m,q,filename=''):
                 f.write('%s %s%s' %(v1, v2, os.linesep))
 
 if __name__ == '__main__':
-    generateGraph(30,30*50/20,30*50, 'bi_graph.txt')
-   #生成了一个二分图,左边有30个节点,右边有30*50/20个节点,整个图之中,一共有30*50条边
-    #边之中可能会有重复的边存在
+    generateGraph(300,300*500/20,300*500, 'big_bi_graph.txt')
+# these function will make a bi_graph which
+# include 30 key nodes and 30*50/20 user nodes
+#and 30*50 edges and there are maybe some same edges.

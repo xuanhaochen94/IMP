@@ -10,6 +10,7 @@ from IC import irunIC
 from degreeDiscount import degreeDiscountIC
 from generalGreedy import generalGreedy
 from BI_graph_greedy import BI_graph_greedy
+from new_BI_graph_greedy import new_BI_graph_greedy
 import os
 
 if __name__ == '__main__':
@@ -18,7 +19,7 @@ if __name__ == '__main__':
 
     # read in graph
     G = nx.Graph()
-    with open('bi_graph.txt') as f:
+    with open('small_bi_graph.txt') as f:
         n, m = f.readline().split()
         for line in f:
             u, v = map(int, line.split())
@@ -34,8 +35,9 @@ if __name__ == '__main__':
 
 
     #S = degreeDiscountIC(G, seed_size)
-    S = generalGreedy(G, seed_size)
+    #S = generalGreedy(G, seed_size)
     #S=BI_graph_greedy(G,30,30*50/20,seed_size)
+    S=new_BI_graph_greedy(G,30,30*50/20,seed_size)
     print 'Initial set of', seed_size, 'nodes chosen'
     print time.time() - start
 
