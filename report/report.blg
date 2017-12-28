@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: plain.bst
+Database file #1: ref.bib
+Warning--to sort, need author or key in konect:2017:moreno_blogs
+You've used 2 entries,
+            2118 wiz_defined-function locations,
+            507 strings with 4249 characters,
+and the built_in function-call counts, 601 in all, are:
+= -- 60
+> -- 14
+< -- 1
++ -- 6
+- -- 4
+* -- 33
+:= -- 85
+add.period$ -- 5
+call.type$ -- 2
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 28
+empty$ -- 62
+format.name$ -- 4
+if$ -- 140
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 1
+newline$ -- 11
+num.names$ -- 2
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 6
+quote$ -- 0
+skip$ -- 24
+stack$ -- 0
+substring$ -- 34
+swap$ -- 10
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 5
+width$ -- 3
+write$ -- 20
+(There was 1 warning)
